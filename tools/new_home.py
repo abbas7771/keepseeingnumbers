@@ -172,6 +172,10 @@ SECTIONS = f"""
         <label style="font-size:12px;color:#a59f93;letter-spacing:1px;text-transform:none;margin:0">Day<select class="k-sel" id="kpd">{days}</select></label>
       </div>
       <p class="k-p">Personal day <b id="kPDay" style="color:var(--gold);font-size:22px"></b>: <span id="kPText"></span></p>
+      <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+        <a id="kPY" href="/numerology-2027/" style="color:var(--ink);text-decoration:none;font-size:15px">Your 2027 personal year: <b id="kPYn" style="color:var(--gold)"></b> <span style="color:var(--gold)">→ Read it</span></a>
+        <a class="k-buy" href="https://meherremov7.gumroad.com/l/evpeqb/WELCOME10" style="border:1px solid var(--gold);border-radius:999px;padding:10px 18px;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none">My 2027 month by month · $9</a>
+      </div>
     </div>
   </div>
 </section>
@@ -285,7 +289,7 @@ JS = """
   const pm=$('kpm'),pd=$('kpd');
   let saved={};try{saved=JSON.parse(localStorage.getItem('ksn_bday')||'{}')}catch(e){}
   if(saved.m){pm.value=saved.m;pd.value=saved.d}
-  function pday(){const p=red(sum(pm.value)+sum(pd.value)+sum(y)+sum(mo)+sum(dd));$('kPDay').textContent=p;$('kPText').textContent=texts[p];try{localStorage.setItem('ksn_bday',JSON.stringify({m:pm.value,d:pd.value}))}catch(e){}}
+  function pday(){const p=red(sum(pm.value)+sum(pd.value)+sum(y)+sum(mo)+sum(dd));$('kPDay').textContent=p;$('kPText').textContent=texts[p];const py=red(sum(pm.value)+sum(pd.value)+sum(2027));$('kPYn').textContent=py;$('kPY').href='/numerology-2027/personal-year-'+py+'/';try{localStorage.setItem('ksn_bday',JSON.stringify({m:pm.value,d:pd.value}))}catch(e){}}
   pm.addEventListener('change',pday);pd.addEventListener('change',pday);pday();
   function target(){let t=new Date(y,11,12);if(now>new Date(y,11,13))t=new Date(y+1,11,12);return t}
   const T=target();
