@@ -11,7 +11,7 @@ The Beaver Supermoon peaks on Tuesday, November 24, 2026, and that date is a uni
 
 ## When is the November 2026 full moon?
 
-The Beaver Moon reaches full phase on **November 24, 2026 at 14:53 UTC**: 9:53 a.m. Eastern, 6:53 a.m. Pacific, 18:53 in Baku. It looks full from November 23 to 25, so any of those nights works.
+The Beaver Moon reaches full phase on **November 24, 2026 at 14:53 UTC**: 9:53 a.m. Eastern, 6:53 a.m. Pacific, 18:53 in Baku. It'll look full from November 23 to 25, so you can pick whichever night is clearest where you are.
 
 It's a supermoon, meaning the moon is near its closest point to Earth and looks slightly larger and brighter. At peak, the moon is in Gemini and the sun is in Sagittarius.
 
@@ -38,7 +38,7 @@ A simple 3-step release. Ten minutes on November 23, 24 or 25 is enough:
 2. **Next to each, write what it taught you.**
 3. **Close one for real this week.** Send the message, cancel the plan, say the goodbye.
 
-If it's cloudy, it works just as well from the kitchen table.
+You don't need candles or crystals. If it's cloudy, it works just as well from your kitchen table.
 
 ## Is seeing 999 connected to this full moon?
 
