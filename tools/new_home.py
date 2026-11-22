@@ -98,10 +98,10 @@ CSS = """
 .k-hl h1{text-align:left;font-size:60px;line-height:1.02;margin-top:14px}
 .k-hl .k-sub{margin:18px 0 0;max-width:500px;color:#b9b2a5;font-size:17px;line-height:1.6}
 .k-form{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
-.k-form label{display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:2px;margin:0}
-.k-form input{width:74px;text-align:center;padding:14px 10px;border-radius:12px;background:#0d0b09}
-.k-form input#ky{width:100px}
-.k-form button{border:0;cursor:pointer}
+.k-form label{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;margin:0}
+.k-form input{width:96px;height:56px;box-sizing:border-box;text-align:center;padding:0 10px;border-radius:14px;background:#0d0b09;font-size:17px}
+
+.k-form button{border:0;cursor:pointer;height:56px;padding:0 32px;display:inline-flex;align-items:center;border-radius:14px}
 .k-err{color:#ff8a7a;font-size:13px;min-height:16px;margin-top:10px}
 .k-hr{flex:1 1 340px;display:flex;justify-content:center;padding:60px 0}
 .k-hr .eclipse{width:270px;height:270px;margin:0}
