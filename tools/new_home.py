@@ -26,6 +26,8 @@ body_end = src.index("</body>")
 
 stars_svg = src[body_start:wrap_start]
 calc_inner = src[wrap_start + len('<div class="wrap">'):foot_p]
+calc_inner = calc_inner.replace('<div class="brand">Keep Seeing Numbers</div>', '')
+calc_inner = calc_inner.replace('<div class="eclipse" id="eclipse"><div class="corona"></div><div class="disk" id="disk">?</div></div>', '')
 main_script = src[src.index("</div>", foot_p) + len("</div>"):modal]
 modal_and_script = src[modal:footer_links]
 
@@ -89,7 +91,24 @@ CSS = """
 .k-fgrid div{display:flex;flex-direction:column;gap:10px}
 .k-fgrid b{font-size:12px;letter-spacing:3px;color:var(--gold)}
 .k-fgrid a{color:#b9b2a5;text-decoration:none}.k-fgrid a:hover{color:var(--gold)}
-@media(max-width:640px){.k-h2{font-size:34px}.k-offer{padding:28px}.k-big{width:90px;height:90px;font-size:44px}}
+#intro,#calc{display:none!important}
+.k-hero{position:relative;z-index:1;background:radial-gradient(ellipse at 75% 30%,#2a1a06 0%,rgba(0,0,0,0) 55%)}
+.k-hin{max-width:1200px;margin:0 auto;padding:64px 24px 56px;display:flex;flex-wrap:wrap;gap:40px;align-items:center}
+.k-hl{flex:1 1 480px}
+.k-hl h1{text-align:left;font-size:60px;line-height:1.02;margin-top:14px}
+.k-hl .k-sub{margin:18px 0 0;max-width:500px;color:#b9b2a5;font-size:17px;line-height:1.6}
+.k-form{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.k-form label{display:flex;flex-direction:column;gap:6px;font-size:11px;letter-spacing:2px;margin:0}
+.k-form input{width:74px;text-align:center;padding:14px 10px;border-radius:12px;background:#0d0b09}
+.k-form input#ky{width:100px}
+.k-form button{border:0;cursor:pointer}
+.k-err{color:#ff8a7a;font-size:13px;min-height:16px;margin-top:10px}
+.k-hr{flex:1 1 340px;display:flex;justify-content:center;padding:60px 0}
+.k-hr .eclipse{width:270px;height:270px;margin:0}
+.k-hr .eclipse .corona{inset:-72px}
+.k-hr .eclipse .disk{font-size:68px;color:var(--gold)}
+#result{margin-top:10px}#reading{scroll-margin-top:90px}
+@media(max-width:640px){.k-hl h1{font-size:42px}.k-hr{padding:40px 0}.k-hr .eclipse{width:200px;height:200px}.k-hr .eclipse .disk{font-size:50px}.k-h2{font-size:34px}.k-offer{padding:28px}.k-big{width:90px;height:90px;font-size:44px}}
 </style>
 """
 
@@ -102,9 +121,9 @@ NAV = """
 </nav></header>
 """
 
-ANGELS = [("000", "Potential"), ("111", "Manifest"), ("222", "Balance"), ("333", "Expression"), ("444", "Foundation"),
+ANGELS = [("111", "Manifest"), ("222", "Balance"), ("333", "Expression"), ("444", "Foundation"),
           ("555", "Change"), ("666", "Rebalance"), ("777", "Luck"), ("888", "Abundance"), ("999", "Completion"),
-          ("1010", "Level up"), ("1111", "Portal"), ("1212", "Step up"), ("1234", "Progress"), ("2222", "Harmony")]
+          ("1010", "Level up"), ("1111", "Portal"), ("1212", "Step up"), ("1234", "Progress"), ("2222", "Harmony"), ("000", "Potential")]
 YEARS = ["Beginnings", "Balance", "Expression", "Foundation", "Change", "Care", "Insight", "Results", "Completion"]
 
 chips = "".join(f'<a class="k-chip" href="/angel-numbers/{n}/">{n[:2] + ":" + n[2:] if len(n) == 4 else n}</a>'
@@ -115,6 +134,24 @@ yrs = "".join(f'<a href="/numerology-2027/personal-year-{i}/"><b>{i}</b> · {w}<
 months = "".join(f'<option value="{i}">{m}</option>' for i, m in enumerate(
     ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 1))
 days = "".join(f'<option value="{i}">{i}</option>' for i in range(1, 32))
+
+HERO = """
+<section class="k-hero" id="top"><div class="k-hin">
+  <div class="k-hl">
+    <p class="k-eyebrow">Free · 60-second reading</p>
+    <h1>Why do you keep seeing <em>the same numbers</em>?</h1>
+    <p class="k-sub">Enter your birth date. Get your Life Path number and what your repeating numbers mean for you.</p>
+    <form class="k-form" id="kform" novalidate>
+      <label>Day<input id="kd" inputmode="numeric" maxlength="2" placeholder="DD" aria-label="Day"></label>
+      <label>Month<input id="km" inputmode="numeric" maxlength="2" placeholder="MM" aria-label="Month"></label>
+      <label>Year<input id="ky" inputmode="numeric" maxlength="4" placeholder="YYYY" aria-label="Year"></label>
+      <button class="k-btn" type="submit">Start my reading</button>
+    </form>
+    <div class="k-err" id="kerr"></div>
+  </div>
+  <div class="k-hr"><div class="eclipse" id="eclipse"><div class="corona"></div><div class="disk" id="disk">11:11</div></div></div>
+</div></section>
+"""
 
 SECTIONS = f"""
 <section class="k-chips-sec"><div class="k-chips"><p>Which number keeps finding you?</p>{chips}</div></section>
@@ -254,13 +291,20 @@ JS = """
   const T=target();
   function tick(){const d=Math.max(0,T-new Date());$('kcD').textContent=Math.floor(d/864e5);$('kcH').textContent=Math.floor(d/36e5)%24;$('kcM').textContent=Math.floor(d/6e4)%60;$('kcS').textContent=Math.floor(d/1e3)%60;$('kTickDays').textContent=Math.floor(d/864e5)}
   tick();setInterval(tick,1000);
+  $('kform').addEventListener('submit',e=>{e.preventDefault();
+    const d=parseInt($('kd').value,10),m=parseInt($('km').value,10),yy=parseInt($('ky').value,10),cy=new Date().getFullYear();
+    if(!(d>=1&&d<=31&&m>=1&&m<=12&&yy>=1900&&yy<=cy)){$('kerr').textContent='Please enter a valid date, e.g. 14 / 03 / 1990.';return}
+    $('kerr').textContent='';$('d').value=String(d);$('m').value=String(m);$('y').value=String(yy);
+    const f=$('calc');if(f.requestSubmit)f.requestSubmit();else f.dispatchEvent(new Event('submit',{cancelable:true}));
+    if($('err').textContent){$('kerr').textContent=$('err').textContent;return}
+    setTimeout(()=>$('reading').scrollIntoView({behavior:'smooth'}),400)});
   document.querySelectorAll('.k-buy').forEach(b=>b.addEventListener('click',e=>{const m=document.querySelector('.buybtn');if(m){e.preventDefault();m.click()}}));
 })();
 </script>
 """
 
 out = (head + CSS + "</head>\n<body>\n" + stars_svg + NAV
-       + '<div class="wrap" id="top">' + calc_inner + "</div>\n"
+       + HERO + '<div class="wrap" id="reading">' + calc_inner + "</div>\n"
        + SECTIONS + FOOT + main_script + modal_and_script + JS + "</body>\n</html>\n")
 open(sys.argv[1], "w", encoding="utf-8").write(out)
 print("ok", len(out))
