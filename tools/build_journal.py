@@ -98,6 +98,22 @@ h1{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:46px;line-he
 .foot{max-width:1200px;margin:60px auto 0;padding:32px 24px;border-top:1px solid rgba(255,204,102,.14);display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;font-size:13px}
 .foot a{color:#a59f93;text-decoration:none}.foot a:hover{color:var(--gold)}
 .note{max-width:1200px;margin:0 auto;padding:0 24px 40px;text-align:center;color:#6d675e;font-size:12px}
+.post table{width:100%;border-collapse:collapse;margin:8px 0 24px;font-size:15px}
+.post th,.post td{text-align:left;padding:11px 12px;border-bottom:1px solid rgba(255,255,255,.1)}
+.post th{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700}
+.guide{margin-top:26px;border-radius:20px;padding:20px 22px;background:radial-gradient(ellipse at top left,rgba(255,170,70,.16),transparent 70%),var(--card);border:1px solid rgba(255,204,102,.25)}
+.guide .gl{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--mute)}
+.guide .gr{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:12px}
+.guide .gc b{display:block;font-size:40px;font-weight:300;color:var(--gold);line-height:1.1}
+.guide .gc small{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mute)}
+.guide .gc span{display:block;font-size:14px;margin-top:2px}
+.guide .gn{margin-top:12px;font-size:12px;color:#8a8478}
+.mine{margin-top:26px;border-radius:20px;padding:22px;background:#050403;border:1px solid rgba(255,204,102,.3)}
+.mine h2{font-family:"Cormorant Garamond",serif;font-size:26px;margin:0}
+.mine .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;align-items:center}
+.mine select{background:#000;color:var(--ink);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px 12px;font:500 15px Montserrat}
+.mine .out{margin-top:14px;font-size:16px;line-height:1.6;min-height:24px}
+.mine .out b{color:var(--gold);font-size:22px}
 @media(max-width:640px){h1{font-size:36px}.post h2{font-size:27px}}
 """
 
@@ -142,6 +158,65 @@ FOOT = """<div class="foot"><a href="/">Free Life Path reading</a><a href="/ange
 """
 
 
+MEAN = ["", "New beginnings", "Connection & balance", "Expression & joy", "Foundation & work", "Change & freedom",
+        "Care & home", "Insight & rest", "Results & abundance", "Completion & release"]
+TEXT = ["", "a day to start something and take the lead", "a day for patience, partnership and small kind gestures",
+        "a day to speak up, create and enjoy people", "a day for steady work and practical plans",
+        "a day open to change and something new", "a day for home, care and the people close to you",
+        "a quiet day for reflection and trusting your gut", "a day to ask for what you have earned",
+        "a day to finish, forgive and let go"]
+
+
+def red(n):
+    while n > 9:
+        n = sum(int(c) for c in str(n))
+    return n
+
+
+def guide_box(p):
+    ev = p.get("event_date")
+    if not ev:
+        return ""
+    d = datetime.date.fromisoformat(ev)
+    ud = red(sum(int(c) for c in d.strftime("%m%d%Y")))
+    uy = red(sum(int(c) for c in str(d.year)))
+    name = e(p.get("event", "This date"))
+    return f"""<div class="guide"><div class="gl">Keep Seeing Numbers · Date Number Guide · {name}</div>
+<div class="gr"><div class="gc"><small>Universal day · {d.strftime('%b %-d, %Y')}</small><b>{ud}</b><span>{MEAN[ud]}</span></div>
+<div class="gc"><small>Universal year · {d.year}</small><b>{uy}</b><span>{MEAN[uy]}</span></div></div>
+<div class="gn">Symbolic meanings from the numerology tradition. Your personal number for this date is below.</div></div>"""
+
+
+def mine_box(p):
+    ev = p.get("event_date")
+    if not ev:
+        return ""
+    d = datetime.date.fromisoformat(ev)
+    months = "".join(f'<option value="{i}">{m}</option>' for i, m in enumerate(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 1))
+    days = "".join(f'<option value="{i}">{i}</option>' for i in range(1, 32))
+    texts = json.dumps(TEXT)
+    return f"""<div class="mine" id="mine"><h2>What {e(p.get('event', 'this date'))} means for <em style="color:var(--gold)">you</em></h2>
+<p style="margin:8px 0 0;color:#b9b2a5;font-size:14px">Pick your birthday to see your personal day number for {d.strftime('%B %-d')}.</p>
+<div class="row"><select id="bm" aria-label="Birth month"><option value="">Month</option>{months}</select><select id="bd" aria-label="Birth day"><option value="">Day</option>{days}</select></div>
+<div class="out" id="bo"></div>
+<a class="btn" href="/" style="margin-top:14px">Get my full free reading</a></div>
+<script>(function(){{const T={texts};const ev="{d.strftime('%m%d%Y')}";const s=x=>String(x).split('').reduce((a,b)=>a+ +b,0);const r=n=>{{while(n>9)n=s(n);return n}};
+const m=document.getElementById('bm'),d=document.getElementById('bd'),o=document.getElementById('bo');
+function go(){{if(!m.value||!d.value){{o.textContent='';return}}const n=r(s(m.value)+s(d.value)+s(ev));o.innerHTML='Your personal day: <b>'+n+'</b> &middot; '+T[n]+'.';try{{localStorage.setItem('ksn_bday',JSON.stringify({{m:m.value,d:d.value}}))}}catch(e){{}}}}
+try{{const b=JSON.parse(localStorage.getItem('ksn_bday')||'{{}}');if(b.m){{m.value=b.m;d.value=b.d}}}}catch(e){{}}
+m.addEventListener('change',go);d.addEventListener('change',go);go()}})();</script>"""
+
+
+def faq_ld(body_html):
+    m = re.search(r"<h2[^>]*>\s*(?:FAQ|Frequently asked questions)\s*</h2>(.*?)(?=<h2|$)", body_html, re.S | re.I)
+    if not m:
+        return None
+    qa = re.findall(r"<h3[^>]*>(.*?)</h3>\s*((?:<p>.*?</p>\s*)+)", m.group(1), re.S)
+    items = [{"@type": "Question", "name": re.sub(r"<[^>]+>", "", q).strip(),
+              "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a).strip()}} for q, a in qa]
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": items} if items else None
+
+
 def nice(d):
     return d.strftime("%B %-d, %Y")
 
@@ -165,13 +240,23 @@ def post_page(p, posts):
         {"@type": "ListItem", "position": 3, "name": p["title"], "item": SITE + path}]}
     others = [o for o in posts if o["slug"] != p["slug"]][:3]
     num = p.get("number", "")
-    out = head(p["title"] + " | Keep Seeing Numbers", p["description"], path, "article", [art, crumbs])
+    lds = [art, crumbs]
+    fq = faq_ld(body)
+    if fq:
+        lds.append(fq)
+    # personal widget goes right before the FAQ (or at the end)
+    mine = mine_box(p)
+    if mine:
+        mm = re.search(r"<h2[^>]*>\s*(?:FAQ|Frequently asked questions)\s*</h2>", body, re.I)
+        body = body[:mm.start()] + mine + body[mm.start():] if mm else body + mine
+    out = head(p["title"] + " | Keep Seeing Numbers", p["description"], path, "article", lds)
     out += f"""<main class="wrap">
 <div class="crumbs"><a href="/">Home</a> / <a href="/journal/">Journal</a></div>
 <p class="eyebrow">{e(p.get('tags', 'Journal').split(',')[0].strip())}</p>
 <h1>{e(p['title'])}</h1>
 <p class="lede">{lede}</p>
 <div class="meta">{f'<div class="num">{e(num)}</div>' if num else ''}<div>Keep Seeing Numbers · {nice(p['dt'])}<br>{max(1, round(words / 220))} min read</div></div>
+{guide_box(p)}
 <article class="post">{body}</article>
 <div class="cta"><h2>What is <em style="color:var(--gold)">your</em> number?</h2>
 <p>Your Life Path number is the lens every date, moon and repeating number is read through. Free, in 10 seconds.</p>
