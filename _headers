@@ -1,0 +1,4 @@
+/tools/*
+  X-Robots-Tag: noindex
+/content/*
+  X-Robots-Tag: noindex

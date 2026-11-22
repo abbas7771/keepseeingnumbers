@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Your Numerology Report · Keep Seeing Numbers</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Cormorant+Garamond:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#ffcc66;--mute:#a59f93;--line:rgba(255,204,102,.2)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Montserrat,system-ui,sans-serif;color:#f4efe6;background:radial-gradient(ellipse at 50% 0%,#1a1208,#000 60%);min-height:100vh}
+.wrap{max-width:520px;margin:0 auto;padding:40px 22px 60px}
+.brand{text-align:center;font-size:12px;letter-spacing:6px;color:var(--mute)}
+.ecl{width:120px;height:120px;margin:28px auto 22px;border-radius:50%;background:#000;box-shadow:0 0 0 6px #fff6e0,0 0 40px 18px rgba(255,190,90,.55),0 0 90px 40px rgba(255,120,30,.2)}
+h1{font-family:"Cormorant Garamond",serif;font-size:36px;text-align:center;line-height:1.1}
+h1 em{color:var(--gold)}
+.sub{text-align:center;color:var(--mute);margin:12px 0 26px;line-height:1.55;font-size:15px}
+form{background:rgba(255,204,102,.05);border:1px solid var(--line);border-radius:20px;padding:22px}
+label{display:block;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+label:first-child{margin-top:0}
+input,select{width:100%;background:#000;border:1px solid rgba(255,255,255,.18);color:#f4efe6;border-radius:12px;padding:14px 12px;font:inherit;font-size:16px;appearance:none}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+.row{display:grid;grid-template-columns:1fr 1.3fr 1.2fr;gap:8px}
+.hint{font-size:12px;color:#7d776c;margin-top:6px;line-height:1.4}
+.btn{display:block;width:100%;margin-top:22px;border:0;border-radius:999px;padding:16px;font:800 15px Montserrat;letter-spacing:3px;text-transform:uppercase;color:#000;background:linear-gradient(90deg,#ffd27a,#ff9a3c);cursor:pointer}
+.btn[disabled]{opacity:.6}
+.err{color:#ff8a7a;font-size:14px;margin-top:14px;text-align:center;min-height:18px;line-height:1.4}
+.buy{text-align:center;margin-top:22px;font-size:13px;color:var(--mute)}
+.buy a{color:var(--gold)}
+.auto{display:none;text-align:center;padding:30px 20px;border:1px solid var(--line);border-radius:20px;background:rgba(255,204,102,.05)}
+.spin{width:36px;height:36px;margin:0 auto 14px;border-radius:50%;border:3px solid rgba(255,204,102,.2);border-top-color:var(--gold);animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+#viewer{display:none;position:fixed;inset:0;background:#111;z-index:10}
+#viewer iframe{width:100%;height:calc(100% - 64px);border:0;background:#050403}
+.bar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#000;border-bottom:1px solid var(--line)}
+.bar span{font-size:12px;letter-spacing:3px;color:var(--mute)}
+.bar .btn{width:auto;margin:0;padding:12px 22px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">KEEP SEEING NUMBERS</div>
+  <div class="ecl"></div>
+  <h1>Create your <em>personal</em><br>numerology report</h1>
+  <p class="sub">Enter the license key from your Gumroad receipt, your full birth name and your date of birth.</p>
+  <div id="auto" class="auto"><div class="spin"></div><div id="autotxt">Finding your purchase…</div><div class="hint">This usually takes a few seconds after payment.</div></div>
+  <form id="f" novalidate>
+    <label>License key</label>
+    <input id="key" placeholder="XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX" autocomplete="off">
+    <label>Full birth name</label>
+    <input id="name" placeholder="e.g. Sarah Elizabeth Johnson" autocomplete="name">
+    <div class="hint">Use the full name on your birth certificate — first, middle and last.</div>
+    <label>Date of birth</label>
+    <div class="row">
+      <select id="d"><option value="">Day</option></select>
+      <select id="m"><option value="">Month</option></select>
+      <input id="y" type="number" inputmode="numeric" placeholder="Year">
+    </div>
+    <button class="btn" id="go" type="submit">Create my report</button>
+    <div class="err" id="err"></div>
+  </form>
+  <p class="buy">Don't have a key yet? <a href="https://meherremov7.gumroad.com/l/evpeqb">Get your report here</a></p>
+</div>
+<div id="viewer"><div class="bar"><span>YOUR REPORT IS READY</span><button class="btn" id="dl" type="button">Download PDF</button></div><iframe id="fr" title="Your numerology report"></iframe></div>
+<script src="/js/data.js" charset="utf-8"></script>
+<script src="/js/render.js" charset="utf-8"></script>
+<script>
+const months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const $=id=>document.getElementById(id);
+for(let i=1;i<=31;i++)$('d').add(new Option(i,i));
+months.forEach((n,i)=>$('m').add(new Option(n,i+1)));
+let urlKey='';try{urlKey=new URLSearchParams(location.search).get('key')||'';if(urlKey)$('key').value=urlKey;}catch(e){}
+let order=null;try{order=JSON.parse(localStorage.getItem('ksn_order')||'null');if(!$('key').value)$('key').value=localStorage.getItem('ksn_key')||''}catch(e){}
+if(order&&order.t&&Date.now()-order.t>86400000){order=null;try{localStorage.removeItem('ksn_order')}catch(e){}}
+if(order){ if(order.name)$('name').value=order.name; if(order.d)$('d').value=order.d; if(order.m)$('m').value=order.m; if(order.y)$('y').value=order.y; }
+if(order&&order.sid&&order.name&&order.d&&!urlKey){
+  $('auto').style.display='block';$('f').style.display='none';
+  let tries=0;
+  const poll=async()=>{
+    tries++;
+    try{const r=await fetch('/api/claim?sid='+order.sid,{cache:'no-store'});const j=await r.json();
+      if(j.ready){$('key').value=j.license_key;$('autotxt').textContent='Purchase found — creating your report…';$('f').requestSubmit();return}}catch(e){}
+    if(tries<40)setTimeout(poll,3000);else{$('auto').style.display='none';$('f').style.display='block';$('err').textContent='We couldn\'t find your purchase automatically — please paste the license key from your receipt.'}
+  };poll();
+}
+$('f').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const key=$('key').value.trim(),name=$('name').value.trim().replace(/\s+/g,' '),d=+$('d').value,m=+$('m').value,y=+$('y').value;
+  if(!key){$('err').textContent='Please paste your license key.';return}
+  if(name.split(' ').length<2||!/[a-zA-Z]/.test(name)){$('err').textContent='Please enter your full birth name (at least first and last name).';return}
+  const dt=new Date(y,m-1,d);if(!d||!m||!y||y<1900||y>2026||dt.getMonth()!==m-1){$('err').textContent='Please check your date of birth.';return}
+  $('err').textContent='';$('go').disabled=true;$('go').textContent='Checking your key…';
+  try{
+    const r=await fetch('/api/verify',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({license_key:key})});
+    const j=await r.json();
+    if(!j.ok){$('auto').style.display='none';$('f').style.display='block';$('err').textContent=j.error||'Something went wrong.';return}
+    const html=renderReport({name,d,m,y,fontBase:'/fonts/'},window.KSN_D,window.KSN_W);
+    $('auto').style.display='none';$('f').style.display='block';
+    try{localStorage.removeItem('ksn_order');localStorage.setItem('ksn_key',key)}catch(e){}
+    $('fr').srcdoc=html;$('viewer').style.display='block';document.body.style.overflow='hidden';
+  }catch(err){$('err').textContent='Connection problem — please try again.';}
+  finally{$('go').disabled=false;$('go').textContent='Create my report';}
+});
+$('dl').addEventListener('click',()=>{try{$('fr').contentWindow.focus();$('fr').contentWindow.print();}catch(e){alertBox()}});
+function alertBox(){$('err').textContent='Use your browser menu → Print → Save as PDF.'}
+</script>
+</body>
+</html>

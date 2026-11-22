@@ -116,7 +116,7 @@ NAV = """
 <div class="k-ticker">Today adds up to <b id="kTick">·</b> · 12/12 portal in <b id="kTickDays">·</b> days · <a href="#portals">See dates</a></div>
 <header class="k-head"><nav class="k-nav" aria-label="Main">
   <a class="k-logo" href="/">Keep Seeing Numbers</a>
-  <div class="k-links"><a href="#today">Today</a><a href="/angel-numbers/">Angel Numbers</a><a href="#portals">Portal Dates</a><a href="/life-path/">Life Path</a><a href="/numerology-2027/">2027</a><a href="#learn">Learn</a></div>
+  <div class="k-links"><a href="#today">Today</a><a href="/angel-numbers/">Angel Numbers</a><a href="#portals">Portal Dates</a><a href="/life-path/">Life Path</a><a href="/numerology-2027/">2027</a><a href="/journal/">Journal</a></div>
   <a class="k-cta" href="#blueprint">Blueprint</a>
 </nav></header>
 """
@@ -271,7 +271,7 @@ FOOT = """
 <footer class="k-foot"><div class="k-fgrid">
   <div><span style="font-size:12px;letter-spacing:5px;text-transform:uppercase">Keep Seeing Numbers</span><span style="color:#8a8478;font-size:13px;line-height:1.6">For self-reflection and entertainment. Numbers don't decide your life. You do.</span></div>
   <div><b>EXPLORE</b><a href="#today">Today's Number</a><a href="/angel-numbers/">Angel Numbers</a><a href="#portals">Portal Dates</a><a href="/life-path/">Life Path</a><a href="/numerology-2027/">Numerology 2027</a></div>
-  <div><b>LEARN</b><a href="#learn">Numerology 101</a><a href="#blueprint">Blueprint PDF</a><a href="https://www.instagram.com/keepseeingnumbers/">Instagram</a></div>
+  <div><b>LEARN</b><a href="/journal/">Journal</a><a href="#learn">Numerology 101</a><a href="#blueprint">Blueprint PDF</a><a href="https://www.instagram.com/keepseeingnumbers/">Instagram</a></div>
   <div><b>ABOUT</b><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a></div>
 </div></footer>
 """
