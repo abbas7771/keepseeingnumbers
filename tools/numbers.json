@@ -1,38 +1,497 @@
 {
-  "111": {
-    "keyword": "Manifestation",
-    "tagline": "Your thoughts are turning into things. Fast.",
-    "intro": "Seeing 111 on the clock, a receipt or a page number is one of the most common number signs people report. In numerology, 1 is the number of beginnings, will and self. Three of them in a row turns that up: whatever you are focused on right now is gathering momentum.",
-    "meaning": "111 is a mirror held up to your attention. It tends to show up when you are standing at the edge of something new and your mind keeps circling back to it. The message is not that something will happen to you. It is that what you keep thinking about is already shaping what you do next, so make sure it is something you actually want.",
-    "love": "Single: notice the story you tell yourself about love, because you are about to act it out. Write down what you want from a partner, not what you are afraid of. In a relationship: 111 points to a fresh start inside the same bond. One honest conversation can reset a pattern you have both been repeating.",
-    "career": "111 favours starting over stopping. If an idea has been sitting in your notes for months, this is the nudge to take the first visible step: send the email, publish the draft, book the meeting. Small and real beats big and imaginary.",
-    "money": "1 energy is self-reliance. Look at one money habit you run on autopilot and decide it again on purpose. A single deliberate change this week counts for more than a perfect plan you never start.",
-    "steps": ["Write one sentence that starts with 'I am starting...' and finish it honestly.", "Catch one repeating negative thought today and rewrite it once, on paper.", "Take one action in the next 24 hours that moves the new thing forward, however small."],
-    "faq": [["Is 111 a good sign?", "In numerology 111 is read as a positive, energising sign of new beginnings. The catch is that it amplifies whatever you focus on, worries included, so it works best as a reminder to focus on purpose."], ["What does 111 mean spiritually?", "Spiritually, 111 is often described as a wake-up call: a moment of alignment between your thoughts and your next steps. Many people treat it as a cue to pause and set an intention."], ["What should I do when I see 1:11?", "Stop for one breath and notice what you were thinking about. Then name one small action that would move that thought in the direction you want."]],
-    "related": ["222", "1111", "1212"]
-  },
-  "222": {
-    "keyword": "Balance",
-    "tagline": "You are not behind. Things are lining up.",
-    "intro": "222 is the number people tend to see when they are waiting: for an answer, a message, a result. In numerology, 2 is the number of partnership, patience and balance. Repeated three times it carries a calm message: what you planted is still growing, even if you cannot see it yet.",
-    "meaning": "222 is about trust and timing. It often appears when you are tempted to force something or give up on it. The number asks for the middle path: keep doing your part, keep your agreements, and let the other side of the equation, people, timing, circumstances, catch up.",
-    "love": "Single: 222 favours connection that grows slowly and steadily over instant sparks. Say yes to the second conversation. In a relationship: it is a cue for cooperation. Ask what your partner needs this week, then actually do it, without keeping score.",
-    "career": "Teamwork over solo heroics. 222 shows up around collaborations, contracts and shared projects. If you are waiting on someone else's decision, follow up once, politely, then put your energy back into the part you control.",
-    "money": "Balance in, balance out. 222 is a good moment to look at one shared expense or one agreement about money and make it fair and clear for everyone involved.",
-    "steps": ["Name the one thing you are waiting on and write down what is still in your control.", "Reach out to one person you are building something with and ask what they need.", "Do one calming routine today: a walk, a slow meal, ten minutes without your phone."],
-    "faq": [["What does 222 mean in love?", "In love, 222 is read as a sign of harmony and patience: relationships that are built steadily, with give and take on both sides."], ["Is 222 a sign of a twin flame?", "Some people connect 222 with twin flame journeys, but in numerology its core meaning is partnership and balance in any close relationship."], ["Why do I keep seeing 2:22?", "Many people notice 2:22 during periods of waiting. Numerology reads it as a reminder that things are developing in the background, and that patience and cooperation will serve you best."]],
-    "related": ["111", "1212", "1111"]
-  },
-  "1111": {
-    "keyword": "The portal",
-    "tagline": "Make the wish. Then make the move.",
-    "intro": "11:11 is the most famous number sign of all. People make wishes on it, screenshot it and send it to friends. In numerology, 11 is a master number linked to intuition and inspiration, and 1111 doubles it. That is why it is so often called a portal: a moment that feels like a door opening.",
-    "meaning": "1111 is less about luck and more about alignment. It tends to appear when your inner voice and your outer life are close to lining up. The door is open, but you still have to walk through it. The wish is the intention; the step you take after it is the part that counts.",
-    "love": "Single: 1111 asks you to trust your gut about people. If someone keeps coming to mind, there is usually a reason worth exploring. In a relationship: it points to a new chapter, a shared goal, a move, a commitment, that you have both been circling.",
-    "career": "Pay attention to ideas that arrive suddenly and feel obvious. 1111 is linked to inspiration, so capture the idea the moment it comes, then test it with one small real-world step this week.",
-    "money": "1111 is a reset button. Look at your money with fresh eyes: one subscription to cancel, one goal to name, one number to check that you have been avoiding.",
-    "steps": ["Next time you see 11:11, say one wish out loud, specific enough that you would know if it came true.", "Write it down within the hour, with the date.", "Choose one action that moves it forward and do it before the day ends."],
-    "faq": [["What does it mean when you see 11:11?", "In numerology, seeing 11:11 is read as a sign of alignment and new beginnings: a reminder that your thoughts and intentions are especially important right now."], ["Should I make a wish at 11:11?", "Making a wish at 11:11 is a popular ritual. The most useful version is to make the wish specific and then follow it with one concrete action."], ["What is the difference between 111 and 1111?", "111 focuses on manifestation and new starts. 1111 adds the master number 11, which is linked to intuition, so it is often read as a stronger, more spiritual version of the same message."]],
-    "related": ["111", "222", "1212"]
-  }
+ "111": {
+  "keyword": "Manifestation",
+  "tagline": "Your thoughts are turning into things. Fast.",
+  "intro": "Seeing 111 on the clock, a receipt or a page number is one of the most common number signs people report. In numerology, 1 is the number of beginnings, will and self. Three of them in a row turns that up: whatever you are focused on right now is gathering momentum.",
+  "meaning": "111 is a mirror held up to your attention. It tends to show up when you are standing at the edge of something new and your mind keeps circling back to it. The message is not that something will happen to you. It is that what you keep thinking about is already shaping what you do next, so make sure it is something you actually want.",
+  "love": "Single: notice the story you tell yourself about love, because you are about to act it out. Write down what you want from a partner, not what you are afraid of. In a relationship: 111 points to a fresh start inside the same bond. One honest conversation can reset a pattern you have both been repeating.",
+  "career": "111 favours starting over stopping. If an idea has been sitting in your notes for months, this is the nudge to take the first visible step: send the email, publish the draft, book the meeting. Small and real beats big and imaginary.",
+  "money": "1 energy is self-reliance. Look at one money habit you run on autopilot and decide it again on purpose. A single deliberate change this week counts for more than a perfect plan you never start.",
+  "steps": [
+   "Write one sentence that starts with 'I am starting...' and finish it honestly.",
+   "Catch one repeating negative thought today and rewrite it once, on paper.",
+   "Take one action in the next 24 hours that moves the new thing forward, however small."
+  ],
+  "faq": [
+   [
+    "Is 111 a good sign?",
+    "In numerology 111 is read as a positive, energising sign of new beginnings. The catch is that it amplifies whatever you focus on, worries included, so it works best as a reminder to focus on purpose."
+   ],
+   [
+    "What does 111 mean spiritually?",
+    "Spiritually, 111 is often described as a wake-up call: a moment of alignment between your thoughts and your next steps. Many people treat it as a cue to pause and set an intention."
+   ],
+   [
+    "What should I do when I see 1:11?",
+    "Stop for one breath and notice what you were thinking about. Then name one small action that would move that thought in the direction you want."
+   ]
+  ],
+  "related": [
+   "222",
+   "1111",
+   "1212"
+  ]
+ },
+ "222": {
+  "keyword": "Balance",
+  "tagline": "You are not behind. Things are lining up.",
+  "intro": "222 is the number people tend to see when they are waiting: for an answer, a message, a result. In numerology, 2 is the number of partnership, patience and balance. Repeated three times it carries a calm message: what you planted is still growing, even if you cannot see it yet.",
+  "meaning": "222 is about trust and timing. It often appears when you are tempted to force something or give up on it. The number asks for the middle path: keep doing your part, keep your agreements, and let the other side of the equation, people, timing, circumstances, catch up.",
+  "love": "Single: 222 favours connection that grows slowly and steadily over instant sparks. Say yes to the second conversation. In a relationship: it is a cue for cooperation. Ask what your partner needs this week, then actually do it, without keeping score.",
+  "career": "Teamwork over solo heroics. 222 shows up around collaborations, contracts and shared projects. If you are waiting on someone else's decision, follow up once, politely, then put your energy back into the part you control.",
+  "money": "Balance in, balance out. 222 is a good moment to look at one shared expense or one agreement about money and make it fair and clear for everyone involved.",
+  "steps": [
+   "Name the one thing you are waiting on and write down what is still in your control.",
+   "Reach out to one person you are building something with and ask what they need.",
+   "Do one calming routine today: a walk, a slow meal, ten minutes without your phone."
+  ],
+  "faq": [
+   [
+    "What does 222 mean in love?",
+    "In love, 222 is read as a sign of harmony and patience: relationships that are built steadily, with give and take on both sides."
+   ],
+   [
+    "Is 222 a sign of a twin flame?",
+    "Some people connect 222 with twin flame journeys, but in numerology its core meaning is partnership and balance in any close relationship."
+   ],
+   [
+    "Why do I keep seeing 2:22?",
+    "Many people notice 2:22 during periods of waiting. Numerology reads it as a reminder that things are developing in the background, and that patience and cooperation will serve you best."
+   ]
+  ],
+  "related": [
+   "111",
+   "1212",
+   "1111"
+  ]
+ },
+ "1111": {
+  "keyword": "The portal",
+  "tagline": "Make the wish. Then make the move.",
+  "intro": "11:11 is the most famous number sign of all. People make wishes on it, screenshot it and send it to friends. In numerology, 11 is a master number linked to intuition and inspiration, and 1111 doubles it. That is why it is so often called a portal: a moment that feels like a door opening.",
+  "meaning": "1111 is less about luck and more about alignment. It tends to appear when your inner voice and your outer life are close to lining up. The door is open, but you still have to walk through it. The wish is the intention; the step you take after it is the part that counts.",
+  "love": "Single: 1111 asks you to trust your gut about people. If someone keeps coming to mind, there is usually a reason worth exploring. In a relationship: it points to a new chapter, a shared goal, a move, a commitment, that you have both been circling.",
+  "career": "Pay attention to ideas that arrive suddenly and feel obvious. 1111 is linked to inspiration, so capture the idea the moment it comes, then test it with one small real-world step this week.",
+  "money": "1111 is a reset button. Look at your money with fresh eyes: one subscription to cancel, one goal to name, one number to check that you have been avoiding.",
+  "steps": [
+   "Next time you see 11:11, say one wish out loud, specific enough that you would know if it came true.",
+   "Write it down within the hour, with the date.",
+   "Choose one action that moves it forward and do it before the day ends."
+  ],
+  "faq": [
+   [
+    "What does it mean when you see 11:11?",
+    "In numerology, seeing 11:11 is read as a sign of alignment and new beginnings: a reminder that your thoughts and intentions are especially important right now."
+   ],
+   [
+    "Should I make a wish at 11:11?",
+    "Making a wish at 11:11 is a popular ritual. The most useful version is to make the wish specific and then follow it with one concrete action."
+   ],
+   [
+    "What is the difference between 111 and 1111?",
+    "111 focuses on manifestation and new starts. 1111 adds the master number 11, which is linked to intuition, so it is often read as a stronger, more spiritual version of the same message."
+   ]
+  ],
+  "related": [
+   "111",
+   "222",
+   "1212"
+  ]
+ },
+ "333": {
+  "keyword": "Expression",
+  "tagline": "Say it, make it, share it.",
+  "intro": "333 tends to show up when there is something you have been holding back: an idea, a feeling, a piece of work. In numerology, 3 is the number of creativity, communication and joy. Three of them together is a loud nudge to let what is inside you out into the world.",
+  "meaning": "333 is about expression. It often appears when you are overthinking instead of creating, or rehearsing a conversation instead of having it. The message is simple: your voice matters more than your polish. The first honest version is worth more than the perfect one you never share.",
+  "love": "Single: be more yourself, not less. The person who is right for you needs to see the real version, jokes and opinions included. In a relationship: 333 asks for more playfulness and more honest words. Say the appreciation out loud instead of assuming it is known.",
+  "career": "Ship the creative thing. 333 favours presenting, posting, pitching and teaching. If you have been waiting to feel ready, treat this as the sign that ready is not coming and you can start anyway.",
+  "money": "3 energy grows through ideas and visibility. Look for one way to earn from something you already make or know, even a small one, and put it in front of people this week.",
+  "steps": [
+   "Finish one creative thing you started, even if it is not perfect.",
+   "Say one honest sentence you have been holding back, kindly.",
+   "Share something you made or learned with at least one other person today."
+  ],
+  "faq": [
+   [
+    "What does 333 mean spiritually?",
+    "Spiritually, 333 is often read as encouragement and support: a sign that you are not alone and that it is safe to express who you are."
+   ],
+   [
+    "What does 333 mean in love?",
+    "In love, 333 points to open communication, joy and playfulness. It favours saying what you feel rather than waiting for the other person to guess."
+   ],
+   [
+    "Why do I keep seeing 3:33?",
+    "Numerology reads 3:33 as a nudge toward self-expression. It often shows up when you are holding back an idea, a feeling or a piece of creative work."
+   ]
+  ],
+  "related": [
+   "222",
+   "444",
+   "1234"
+  ]
+ },
+ "444": {
+  "keyword": "Foundation",
+  "tagline": "Keep going. The ground under you is solid.",
+  "intro": "444 is the number people often see on hard days, when they are tired, doubting themselves or wondering if the effort is worth it. In numerology, 4 is the number of structure, work and stability. Repeated three times it reads like a hand on your shoulder: what you are building is holding.",
+  "meaning": "444 is not a warning. It is a 'keep going'. It shows up when you are in the middle of slow, unglamorous work and need a reason not to quit. The number asks you to trust the process you chose, tighten your routines, and let consistency do the heavy lifting.",
+  "love": "Single: look for steadiness over drama. The person who shows up reliably is worth more than the one who sweeps you off your feet once. In a relationship: 444 favours building something concrete together: a routine, a plan, a home, a savings goal.",
+  "career": "Double down on fundamentals. 444 favours systems, checklists and doing the boring part well. If a project feels stuck, fix the process rather than starting something new.",
+  "money": "4 is the builder's number. Set up one automatic habit, a transfer, a budget line, a weekly review, that keeps working when your motivation does not.",
+  "steps": [
+   "Write down the one thing you are building and why it matters to you.",
+   "Pick one routine that supports it and do it today, even in a small version.",
+   "Remove one distraction that keeps pulling you off course."
+  ],
+  "faq": [
+   [
+    "Is 444 a bad sign?",
+    "No. In numerology 444 is read as a sign of protection and stability, a reminder that the foundation you are building is strong."
+   ],
+   [
+    "What does 444 mean in love?",
+    "In love, 444 points to commitment and steadiness: relationships built on reliability and shared plans."
+   ],
+   [
+    "What should I do when I see 4:44?",
+    "Treat it as a reminder to stay consistent. Choose one routine that supports your goal and keep it going today."
+   ]
+  ],
+  "related": [
+   "333",
+   "555",
+   "1010"
+  ]
+ },
+ "555": {
+  "keyword": "Change",
+  "tagline": "Something is ending so something else can begin.",
+  "intro": "555 shows up around turning points: a job ending, a move, a breakup, a decision you can feel coming. In numerology, 5 is the number of freedom, movement and change. Three fives is the signal that a shift is underway, whether you planned it or not.",
+  "meaning": "555 means something is ending. Let it. The number appears when holding on is costing you more than letting go. Change can feel unsettling, but 555 is read as a sign that the shift is making room for something that fits you better.",
+  "love": "Single: be open to someone outside your usual type or routine. In a relationship: 555 points to a needed change in how you relate, not necessarily an ending. Try something new together and talk honestly about what has to shift.",
+  "career": "Expect movement: new roles, new offers, new directions. If you have been considering a change, 555 favours exploring it seriously. Update your CV, have the conversation, research the option.",
+  "money": "5 energy is about flexibility. Review where your money is stuck in old patterns and make one change that gives you more freedom, not less.",
+  "steps": [
+   "Name one thing in your life that already feels finished.",
+   "Decide one small way to let it go this week.",
+   "Say yes to one new experience you would normally avoid."
+  ],
+  "faq": [
+   [
+    "Is 555 a good or bad sign?",
+    "In numerology 555 is neutral to positive: it signals change. How it feels depends on how tightly you are holding on to what is ending."
+   ],
+   [
+    "What does 555 mean in a relationship?",
+    "It usually points to change in the relationship, a new phase, a new routine, or an honest conversation, rather than automatically meaning a breakup."
+   ],
+   [
+    "Why do I keep seeing 5:55?",
+    "Numerology reads repeated 5:55 as a sign that a transition is underway and that adapting will serve you better than resisting."
+   ]
+  ],
+  "related": [
+   "444",
+   "666",
+   "777"
+  ]
+ },
+ "666": {
+  "keyword": "Rebalance",
+  "tagline": "Not evil. Just a nudge to come back to centre.",
+  "intro": "666 has a bad reputation, mostly from films. In numerology it means something much gentler. 6 is the number of home, care and responsibility. Three sixes appear when your life has tipped too far toward worry, work or other people's needs, and it is time to rebalance.",
+  "meaning": "666 is not a curse. You have just been reading it wrong. It shows up when your thoughts are stuck on fear or on material things, or when you are giving so much that you have nothing left. The message is to come back to the basics: rest, home, the people who actually matter.",
+  "love": "Single: care for yourself the way you would want a partner to. In a relationship: 666 asks for balance between giving and receiving. If one of you is carrying everything, talk about it.",
+  "career": "Check whether work has swallowed everything else. 666 favours setting a boundary: a time you stop, a task you delegate, a request you say no to.",
+  "money": "6 cares about security. If money worries are running your thoughts, write the actual numbers down. Facts on paper are calmer than fears in your head.",
+  "steps": [
+   "Name one worry and write the facts about it next to it.",
+   "Do one thing that cares for your body or your home today.",
+   "Spend real time with one person who makes you feel at home."
+  ],
+  "faq": [
+   [
+    "Is 666 a bad sign in numerology?",
+    "No. In numerology 666 is read as a call to rebalance, not as something evil. It points to care, home and responsibility."
+   ],
+   [
+    "What does 666 mean in love?",
+    "In love, 666 points to balance between giving and receiving, and to nurturing the relationship and yourself."
+   ],
+   [
+    "Why do I keep seeing 6:66 or 666?",
+    "Numerology reads repeated 666 as a sign that your attention has drifted toward fear or overwork, and that it is time to come back to centre."
+   ]
+  ],
+  "related": [
+   "555",
+   "777",
+   "888"
+  ]
+ },
+ "777": {
+  "keyword": "Luck & insight",
+  "tagline": "You are on the right track. Keep listening.",
+  "intro": "777 is the number people associate with jackpots, and in numerology it is one of the most positive signs there is. 7 is the number of wisdom, intuition and inner work. Three sevens show up when your inner knowing and your outer path line up.",
+  "meaning": "777 is a confirmation. It tends to appear after you have made a choice that came from your intuition rather than pressure. The luck it brings is not random: it is what happens when you are in the right place because you listened to yourself.",
+  "love": "Single: trust your read on people. If something feels off, it is; if something feels right, give it room. In a relationship: 777 points to deeper understanding, the kind of connection that grows when you both are honest about who you are.",
+  "career": "777 favours learning, research and strategy. Take time to study the thing you want to be good at. The insight you gain now will pay off later.",
+  "money": "Luck favours the prepared. 777 is a good moment to learn about money rather than gamble with it: read, plan, and make one informed decision.",
+  "steps": [
+   "Spend ten quiet minutes today without input: no phone, no music.",
+   "Write down one decision your gut has been pointing to.",
+   "Learn one new thing about the area you want to grow in."
+  ],
+  "faq": [
+   [
+    "Is 777 a lucky number?",
+    "In numerology 777 is read as a very positive sign of luck and alignment, especially when you are following your intuition."
+   ],
+   [
+    "What does 777 mean spiritually?",
+    "Spiritually, 777 is linked to inner wisdom and awakening: a sign that you are on the right path."
+   ],
+   [
+    "What does 777 mean in love?",
+    "In love, 777 points to deep understanding and connections built on honesty."
+   ]
+  ],
+  "related": [
+   "666",
+   "888",
+   "999"
+  ]
+ },
+ "888": {
+  "keyword": "Abundance",
+  "tagline": "What you put in is starting to come back.",
+  "intro": "888 is often called the money number, and people love seeing it on receipts and bank apps. In numerology, 8 is the number of power, results and abundance. Three eights point to a season where effort turns into reward.",
+  "meaning": "888 is about flow: energy, work and money moving in both directions. It shows up when the results of past effort are about to arrive, and it asks you to receive them well and use them wisely. Abundance in numerology is not just money; it is having more than enough of what matters.",
+  "love": "Single: you are worth the effort you give others. Expect the same back. In a relationship: 888 points to an equal exchange of care and a solid, rewarding phase.",
+  "career": "Ask for what your work is worth. 888 favours negotiations, promotions and pricing your services properly.",
+  "money": "Before you spend, pause. 888 is a reminder that abundance grows when money is directed on purpose. Decide where the next amount goes before it arrives.",
+  "steps": [
+   "Write down one result you have earned recently and acknowledge it.",
+   "Make one money decision on purpose today instead of on impulse.",
+   "Ask clearly for one thing you have earned."
+  ],
+  "faq": [
+   [
+    "Is 888 a money number?",
+    "In numerology 888 is strongly linked to abundance and financial flow, but it also covers abundance in energy, love and opportunities."
+   ],
+   [
+    "What does 888 mean in love?",
+    "It points to balance and reward: a relationship where both people give and receive."
+   ],
+   [
+    "What should I do when I see 8:08 or 888?",
+    "Pause before your next money decision and make it deliberately. 888 favours using resources on purpose."
+   ]
+  ],
+  "related": [
+   "777",
+   "999",
+   "1212"
+  ]
+ },
+ "999": {
+  "keyword": "Completion",
+  "tagline": "Close the chapter. The next one is waiting.",
+  "intro": "999 shows up at endings: the last month of something, the final stage of a project, the point where you know it is time to move on. In numerology, 9 is the number of completion and wisdom. Three nines say a cycle is finishing.",
+  "meaning": "999 means close the chapter, properly. It is not about loss; it is about finishing well so you are free to begin again. The number appears when you are holding on to something that has already done its job.",
+  "love": "Single: release the last relationship fully, including the story you tell about it. In a relationship: 999 points to the end of an old pattern, not necessarily the partner. Let the old way go.",
+  "career": "Finish before you start. Wrap up the open project, hand over the task, archive the old idea. 999 favours clearing space for what comes next.",
+  "money": "Settle what is open: an old debt, a forgotten subscription, an unfinished claim. Closure frees energy.",
+  "steps": [
+   "List three things in your life that are already finished.",
+   "Close one of them for real this week: a message, a file, a goodbye.",
+   "Write one sentence about what you learned from that chapter."
+  ],
+  "faq": [
+   [
+    "What does 999 mean?",
+    "In numerology 999 means completion: the end of a cycle and the start of a new one."
+   ],
+   [
+    "Is 999 a bad sign?",
+    "No. 999 is read as a natural ending that makes space for growth. It can feel bittersweet but is not negative."
+   ],
+   [
+    "What does 999 mean in love?",
+    "In love, 999 points to closing an old chapter, sometimes a past relationship, sometimes an old pattern within a current one."
+   ]
+  ],
+  "related": [
+   "888",
+   "000",
+   "111"
+  ]
+ },
+ "000": {
+  "keyword": "Infinite potential",
+  "tagline": "A clean slate. Anything can start here.",
+  "intro": "000 and 00:00 appear at midnight, on odometers and on counters resetting to zero. In numerology, 0 represents potential, wholeness and the space before something begins. Three zeros point to a blank page.",
+  "meaning": "000 is a reset. It shows up when an old cycle has closed and the next one has not been chosen yet. That in-between moment is powerful: you get to decide what comes next instead of repeating what came before.",
+  "love": "Single: you are starting fresh, so start with clear intentions. In a relationship: 000 is a chance to reset an old dynamic and agree on what you both want now.",
+  "career": "Blank-page energy. 000 favours rethinking from scratch: if you could start your work over, what would you do differently? Write that down.",
+  "money": "Zero-based thinking: imagine your budget starting from nothing and ask which expenses you would choose again.",
+  "steps": [
+   "Write what you want the next chapter to look like in three sentences.",
+   "Drop one habit that belongs to the old chapter.",
+   "Start one tiny new habit that belongs to the new one."
+  ],
+  "faq": [
+   [
+    "What does 000 mean?",
+    "In numerology 000 represents new beginnings and infinite potential, a fresh start after a cycle ends."
+   ],
+   [
+    "What does 00:00 mean?",
+    "Seeing 00:00 is read as a reset moment, a reminder that you can begin again with a clean slate."
+   ],
+   [
+    "What is the difference between 000 and 999?",
+    "999 is the ending of a cycle; 000 is the empty space after it, where a new beginning is chosen."
+   ]
+  ],
+  "related": [
+   "999",
+   "111",
+   "1010"
+  ]
+ },
+ "1212": {
+  "keyword": "Step up",
+  "tagline": "Stay positive and take the next step.",
+  "intro": "12:12 is a mirror time that many people notice around big decisions. It combines 1, the number of new beginnings, and 2, the number of balance and partnership, twice over. And 1 + 2 = 3, the number of growth and expression.",
+  "meaning": "1212 is about stepping out of your comfort zone with a steady heart. It appears when you are ready for the next level but tempted to stay where it is safe. The number asks you to move forward while keeping your relationships and your balance intact.",
+  "love": "Single: say yes to the step that scares you a little: the message, the date, the honest answer. In a relationship: 1212 points to growing together, a new commitment or a new shared goal.",
+  "career": "Level up. 1212 favours applying for the bigger role, raising your price or taking on the project that stretches you, with support around you.",
+  "money": "Grow carefully. 1212 favours a balanced step up: invest in your skills or your business, but with a plan you can stick to.",
+  "steps": [
+   "Name the next step you have been avoiding.",
+   "Tell one supportive person you are going to take it.",
+   "Take the first part of it within 48 hours."
+  ],
+  "faq": [
+   [
+    "What does 12:12 mean?",
+    "In numerology 12:12 is read as a sign to step out of your comfort zone and keep a positive mindset as you move forward."
+   ],
+   [
+    "Is 1212 a twin flame number?",
+    "Some people link 1212 to twin flames because it mirrors itself, but in numerology its core meaning is growth with balance."
+   ],
+   [
+    "What happens on 12/12?",
+    "December 12 is seen by many as a portal date, a good moment to set intentions for growth and expression before the year ends."
+   ]
+  ],
+  "related": [
+   "1111",
+   "1234",
+   "222"
+  ]
+ },
+ "1234": {
+  "keyword": "Progress",
+  "tagline": "One step at a time is still progress.",
+  "intro": "1234 is a sequence rather than a repeat, and people notice it on clocks at 12:34 and on receipts. In numerology, an ascending sequence is read as steady progress: one step leading naturally to the next.",
+  "meaning": "1234 says you are on track. It shows up when you are impatient with how slowly things move. The message is that the steps are working, and skipping one would cost you more than taking it.",
+  "love": "Single: let things unfold in order. Getting to know someone step by step builds something that lasts. In a relationship: 1234 favours taking the next natural step together.",
+  "career": "Break the big goal into four steps and do the first one. 1234 favours planning, sequencing and simplifying.",
+  "money": "Progress beats perfection. Make one small, steady improvement: save a little, pay a little, learn a little.",
+  "steps": [
+   "Write your goal and break it into four steps.",
+   "Do step one today.",
+   "Put step two in your calendar."
+  ],
+  "faq": [
+   [
+    "What does 1234 mean?",
+    "In numerology 1234 is read as a sign of progress and steady growth, a reminder that you are moving in the right direction."
+   ],
+   [
+    "What does 12:34 mean?",
+    "Seeing 12:34 is often read as a nudge to keep going step by step and trust the order things are unfolding in."
+   ],
+   [
+    "Is 1234 an angel number?",
+    "Yes, sequences like 1234 are treated as angel numbers, signalling progress and natural next steps."
+   ]
+  ],
+  "related": [
+   "1212",
+   "111",
+   "333"
+  ]
+ },
+ "2222": {
+  "keyword": "Harmony, doubled",
+  "tagline": "Trust the people and the timing.",
+  "intro": "2222 and 22:22 carry the master number 22, often called the master builder in numerology. Combined with the patience and partnership of 2, it points to big things built together, slowly and solidly.",
+  "meaning": "2222 is about trust: in timing, in people, and in the long game. It shows up when you are close to giving up on something that just needs more time and more cooperation. The message is that the pieces are coming together.",
+  "love": "Single: someone who fits well may be closer than you think, possibly already in your circle. In a relationship: 2222 points to deep harmony and building a shared future.",
+  "career": "Partnerships matter now. 2222 favours collaboration over going it alone, and long-term projects over quick wins.",
+  "money": "Think long term. 2222 favours steady, patient choices and shared financial plans built on trust.",
+  "steps": [
+   "Name one long-term thing you are building.",
+   "Thank one person who is helping you build it.",
+   "Choose patience in one situation where you would normally push."
+  ],
+  "faq": [
+   [
+    "What does 22:22 mean?",
+    "In numerology 22:22 is read as a sign of harmony and the master number 22, linked to building something meaningful over time."
+   ],
+   [
+    "Is 2222 a love number?",
+    "2222 is strongly linked to partnership and harmony, so it is often read as a positive sign for love."
+   ],
+   [
+    "What is the difference between 222 and 2222?",
+    "Both relate to balance and patience; 2222 adds the master number 22, which points to bigger, long-term building."
+   ]
+  ],
+  "related": [
+   "222",
+   "1111",
+   "1212"
+  ]
+ },
+ "1010": {
+  "keyword": "Level up",
+  "tagline": "A new chapter, powered by your own choices.",
+  "intro": "10:10 combines 1, new beginnings, with 0, potential, twice. In numerology, 10 itself reduces to 1, so 1010 is read as a strong, fresh start backed by everything you have learned so far.",
+  "meaning": "1010 is about personal growth. It shows up when you are ready to become a more grown-up version of yourself: to take responsibility, set standards and stop waiting for permission.",
+  "love": "Single: raise your standards and keep them. In a relationship: 1010 points to growing up together, more honesty, more responsibility, more trust.",
+  "career": "Take ownership. 1010 favours leadership, independence and starting the thing you have been planning on your own terms.",
+  "money": "Graduate one money habit: from saving 'when possible' to saving automatically, from guessing to tracking.",
+  "steps": [
+   "Write one standard you are raising for yourself.",
+   "Do one thing today that the next version of you would do.",
+   "Stop one thing the old version of you would keep doing."
+  ],
+  "faq": [
+   [
+    "What does 10:10 mean?",
+    "In numerology 10:10 is read as a sign of new beginnings and personal growth, a nudge to step into a stronger version of yourself."
+   ],
+   [
+    "Is 1010 a good sign?",
+    "Yes, 1010 is generally read as positive, pointing to progress and fresh starts."
+   ],
+   [
+    "What does 1010 mean in love?",
+    "In love, 1010 points to growth, maturity and higher standards in relationships."
+   ]
+  ],
+  "related": [
+   "1111",
+   "000",
+   "444"
+  ]
+ }
 }
