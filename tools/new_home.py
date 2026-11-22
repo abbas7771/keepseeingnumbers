@@ -99,7 +99,7 @@ CSS = """
 .k-hl .k-sub{margin:18px 0 0;max-width:500px;color:#b9b2a5;font-size:17px;line-height:1.6}
 .k-form{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
 .k-form label{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;margin:0}
-.k-form input{width:96px;height:56px;box-sizing:border-box;text-align:center;padding:0 10px;border-radius:14px;background:#0d0b09;font-size:17px}
+.k-form select{width:100px;height:56px;box-sizing:border-box;text-align:center;text-align-last:center;padding:0 10px;border-radius:14px;background:#0d0b09;font-size:17px;cursor:pointer;color:var(--ink)}.k-form select:invalid,.k-form select option[disabled]{color:#6f6a60}.k-form select option{background:#0d0b09;color:var(--ink)}
 
 .k-form button{border:0;cursor:pointer;height:56px;padding:0 32px;display:inline-flex;align-items:center;border-radius:14px}
 .k-err{color:#ff8a7a;font-size:13px;min-height:16px;margin-top:10px}
@@ -135,16 +135,20 @@ months = "".join(f'<option value="{i}">{m}</option>' for i, m in enumerate(
     ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 1))
 days = "".join(f'<option value="{i}">{i}</option>' for i in range(1, 32))
 
-HERO = """
+hdays = "".join(f'<option value="{i}">{i}</option>' for i in range(1, 32))
+hmonths = "".join(f'<option value="{i}">{m}</option>' for i, m in enumerate(
+    ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], 1))
+hyears = "".join(f'<option value="{y}">{y}</option>' for y in range(2026, 1919, -1))
+HERO = f"""
 <section class="k-hero" id="top"><div class="k-hin">
   <div class="k-hl">
     <p class="k-eyebrow">Free · 60-second reading</p>
     <h1>Why do you keep seeing <em>the same numbers</em>?</h1>
     <p class="k-sub">Enter your birth date. Get your Life Path number and what your repeating numbers mean for you.</p>
     <form class="k-form" id="kform" novalidate>
-      <label>Day<input id="kd" inputmode="numeric" maxlength="2" placeholder="DD" aria-label="Day"></label>
-      <label>Month<input id="km" inputmode="numeric" maxlength="2" placeholder="MM" aria-label="Month"></label>
-      <label>Year<input id="ky" inputmode="numeric" maxlength="4" placeholder="YYYY" aria-label="Year"></label>
+      <label>Day<select id="kd" required aria-label="Day"><option value="" selected disabled>DD</option>{hdays}</select></label>
+      <label>Month<select id="km" required aria-label="Month"><option value="" selected disabled>MM</option>{hmonths}</select></label>
+      <label>Year<select id="ky" required aria-label="Year"><option value="" selected disabled>YYYY</option>{hyears}</select></label>
       <button class="k-btn" type="submit">Start my reading</button>
     </form>
     <div class="k-err" id="kerr"></div>
@@ -297,7 +301,7 @@ JS = """
   tick();setInterval(tick,1000);
   $('kform').addEventListener('submit',e=>{e.preventDefault();
     const d=parseInt($('kd').value,10),m=parseInt($('km').value,10),yy=parseInt($('ky').value,10),cy=new Date().getFullYear();
-    if(!(d>=1&&d<=31&&m>=1&&m<=12&&yy>=1900&&yy<=cy)){$('kerr').textContent='Please enter a valid date, e.g. 14 / 03 / 1990.';return}
+    if(!(d>=1&&d<=31&&m>=1&&m<=12&&yy>=1900&&yy<=cy)){$('kerr').textContent='Please pick your day, month and year.';return}
     $('kerr').textContent='';$('d').value=String(d);$('m').value=String(m);$('y').value=String(yy);
     const f=$('calc');if(f.requestSubmit)f.requestSubmit();else f.dispatchEvent(new Event('submit',{cancelable:true}));
     if($('err').textContent){$('kerr').textContent=$('err').textContent;return}
