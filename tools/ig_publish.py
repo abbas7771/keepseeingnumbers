@@ -22,7 +22,15 @@ for p in q["posts"]:
     if p.get("status") != "approved": continue
     if datetime.datetime.fromisoformat(p["publish_at"].replace("Z", "+00:00")) > now: continue
     try:
-        c = call("POST", f"{UID}/media", media_type="REELS", video_url=MEDIA_BASE + p["file"], caption=p["caption"], share_to_feed="true")
+        if p.get("type") == "carousel":
+            kids = [call("POST", f"{UID}/media", image_url=MEDIA_BASE + f, is_carousel_item="true")["id"] for f in p["files"]]
+            for k in kids:
+                for _ in range(20):
+                    if call("GET", k, fields="status_code").get("status_code") == "FINISHED": break
+                    time.sleep(3)
+            c = call("POST", f"{UID}/media", media_type="CAROUSEL", children=",".join(kids), caption=p["caption"])
+        else:
+            c = call("POST", f"{UID}/media", media_type="REELS", video_url=MEDIA_BASE + p["file"], caption=p["caption"], share_to_feed="true")
         cid = c["id"]
         for _ in range(40):
             st = call("GET", cid, fields="status_code,status")
