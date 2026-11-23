@@ -1,8 +1,0 @@
-User-agent: *
-Disallow: /tools/
-Disallow: /content/
-Allow: /
-Disallow: /report/
-Disallow: /api/
-
-Sitemap: https://keepseeingnumbers.com/sitemap.xml
