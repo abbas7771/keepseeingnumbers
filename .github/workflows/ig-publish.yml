@@ -1,0 +1,28 @@
+name: Instagram publisher
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency: ig-publish
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: main }
+      - uses: actions/checkout@v4
+        with: { ref: media, path: media }
+      - name: Publish due reels
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: python3 main/tools/ig_publish.py media/ig-queue.json
+      - name: Save queue status
+        working-directory: media
+        run: |
+          if ! git diff --quiet; then
+            git config user.name "ksn-bot"; git config user.email "abbas7771@users.noreply.github.com"
+            git commit -am "ig: update queue status" && git push
+          fi
