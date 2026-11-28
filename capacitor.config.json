@@ -1,0 +1,7 @@
+{
+  "appId": "com.keepseeingnumbers.app",
+  "appName": "Keep Seeing Numbers",
+  "webDir": "www",
+  "android": { "backgroundColor": "#0a0806" },
+  "plugins": { "CapacitorHttp": { "enabled": true } }
+}
