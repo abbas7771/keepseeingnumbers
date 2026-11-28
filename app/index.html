@@ -179,6 +179,7 @@ $("calc").onclick=()=>{
   if(!validDate(d,m,y)){$("merr").textContent="Please choose your full birth date.";return}
   $("merr").textContent="";
   try{localStorage.setItem("ksn_bday",JSON.stringify({d,m,y}))}catch(e){}
+  $("rd").value=d;$("rm").value=m;$("ry").value=y;
   const a=red(m,true),b=red(d,true),c=red(sum(y),true),lp=red(a+b+c,true);
   const py=red(red(d)+red(m)+2);
   const now=new Date(),pday=red(sum(m)+sum(d)+sum(now.getFullYear())+sum(now.getMonth()+1)+sum(now.getDate()));
