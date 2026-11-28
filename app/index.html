@@ -8,6 +8,8 @@
 <link rel="canonical" href="https://keepseeingnumbers.com/app/">
 <link rel="manifest" href="/app/manifest.webmanifest">
 <meta name="theme-color" content="#0a0806">
+<meta name="color-scheme" content="dark only">
+<meta name="supported-color-schemes" content="dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KSN">
@@ -15,7 +17,7 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0a0806;--card:#13100c;--line:rgba(255,204,102,.22);--gold:#ffcc66;--ink:#f3ece0;--mute:#a59d90}
+:root{color-scheme:dark only;--bg:#0a0806;--card:#16120d;--line:rgba(255,214,120,.38);--gold:#ffd779;--ink:#ffffff;--mute:#d6cec2}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--ink);font-family:Montserrat,system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
 body{min-height:100vh;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
@@ -27,37 +29,37 @@ main{padding:10px 20px 20px;max-width:560px;margin:0 auto}
 .view{display:none}.view.on{display:block}
 h1{font-family:"Cormorant Garamond",serif;font-size:34px;line-height:1.1;margin:10px 0 6px}
 h1 em{color:var(--gold);font-style:normal}
-.sub{color:var(--mute);font-size:14px;line-height:1.5;margin-bottom:16px}
+.sub{color:var(--mute);font-size:15px;line-height:1.5;margin-bottom:16px}
 .search{display:flex;gap:8px}
-input,select{background:#000;border:1px solid rgba(255,204,102,.45);color:var(--ink);border-radius:14px;padding:14px 16px;font:inherit;font-size:17px;width:100%}
-.btn{border:0;border-radius:14px;padding:14px 20px;font:inherit;font-weight:800;letter-spacing:1px;color:#000;background:linear-gradient(90deg,#ffd27a,#ff9a3c);cursor:pointer;text-decoration:none;display:inline-block;text-align:center}
+input,select{background:#1b1610;border:1px solid rgba(255,204,102,.45);color:var(--ink);border-radius:14px;padding:14px 16px;font:inherit;font-size:17px;width:100%}
+.btn{border:0;border-radius:14px;padding:14px 20px;font:inherit;font-weight:800;letter-spacing:1px;color:#1a1206;background:#ffc94d;background-image:linear-gradient(90deg,#ffe08a,#ffb340);cursor:pointer;text-decoration:none;display:inline-block;text-align:center}
 .btn.w{width:100%;margin-top:12px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
 .chips button{background:var(--card);border:1px solid var(--line);color:var(--gold);border-radius:999px;padding:8px 14px;font:inherit;font-weight:700;font-size:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:16px}
 .big{font-family:"Cormorant Garamond",serif;font-size:64px;color:var(--gold);line-height:1}
 .tag{display:inline-block;font-size:10px;letter-spacing:3px;border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:4px 10px;margin:8px 0 10px}
-.card p{line-height:1.6;font-size:15px;color:#ddd5c6;margin-bottom:10px}
+.card p{line-height:1.65;font-size:16px;color:#f4efe7;margin-bottom:10px}
 .card h3{font-size:13px;letter-spacing:2px;color:var(--gold);margin:14px 0 6px;text-transform:uppercase}
-.card ol{margin:0 0 6px 20px;line-height:1.6;color:#ddd5c6}
+.card ol{margin:0 0 6px 20px;line-height:1.65;color:#f4efe7;font-size:16px}
 details{border-top:1px solid rgba(255,255,255,.08);padding:10px 0}
 summary{cursor:pointer;font-weight:600;font-size:14px}
 details p{margin-top:8px}
-.kv{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.kv{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:#fff;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06)}
 .kv span:first-child{color:var(--mute)}
 .more{color:var(--gold);font-weight:700;text-decoration:none;display:inline-block;margin-top:8px}
 .row{display:grid;grid-template-columns:1fr 1.4fr 1.2fr;gap:8px}
 .res{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:6px}
 .res div{text-align:center;background:#000;border:1px solid var(--line);border-radius:16px;padding:12px 6px}
 .res b{display:block;font-family:"Cormorant Garamond",serif;font-size:40px;color:var(--gold)}
-.res span{font-size:11px;color:var(--mute);letter-spacing:1px}
+.res span{font-size:12px;color:#fff;letter-spacing:1px}
 .err{color:#ff8a7a;font-size:13px;margin-top:8px;min-height:16px}
 ul.ck{list-style:none;margin:10px 0}
-ul.ck li{padding:6px 0 6px 24px;position:relative;font-size:14px;color:#ddd5c6}
+ul.ck li{padding:6px 0 6px 24px;position:relative;font-size:15px;color:#f4efe7}
 ul.ck li:before{content:"✦";position:absolute;left:0;color:var(--gold)}
-.note{font-size:12px;color:var(--mute);margin-top:12px;line-height:1.5}
+.note{font-size:13px;color:var(--mute);margin-top:12px;line-height:1.5}
 nav.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(10,8,6,.96);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);backdrop-filter:blur(10px)}
-nav.tabs button{flex:1;background:none;border:0;color:var(--mute);font:inherit;font-size:11px;font-weight:700;letter-spacing:1px;padding:12px 0 14px;display:flex;flex-direction:column;align-items:center;gap:4px}
+nav.tabs button{flex:1;background:none;border:0;color:#cfc6b8;font:inherit;font-size:11px;font-weight:700;letter-spacing:1px;padding:12px 0 14px;display:flex;flex-direction:column;align-items:center;gap:4px}
 nav.tabs button b{font-size:20px;font-family:"Cormorant Garamond",serif}
 nav.tabs button.on{color:var(--gold)}
 #ios{display:none}
