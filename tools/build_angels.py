@@ -77,7 +77,7 @@ HEAD_TAIL = ('<meta name="google-adsense-account" content="ca-pub-61140347973826
 HEADER = ('<header><a class="logo" href="/"><i></i>KEEP SEEING NUMBERS</a><nav><a href="/angel-numbers/">Angel Numbers</a>'
           '<a href="/life-path/">Life Path</a><a href="/numerology-2027/">2027</a><a href="/journal/">Journal</a></nav></header>')
 
-FOOTER = ('<footer><a href="/">Free Life Path reading</a><a href="/angel-numbers/">Angel numbers</a><a href="/life-path/">Life Path numbers</a>'
+FOOTER = ('<footer><a href="/app/">Get the app</a><a href="/">Free Life Path reading</a><a href="/angel-numbers/">Angel numbers</a><a href="/life-path/">Life Path numbers</a>'
           '<a href="/numerology-2027/">Numerology 2027</a><br><br><a href="/about/">About</a><a href="/contact/">Contact</a>'
           '<a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><br><br>'
           'For self-reflection and entertainment. Numbers are a map, not a verdict. © 2026 Keep Seeing Numbers</footer>')
@@ -166,6 +166,17 @@ def build_page(p, pages, live):
 </body></html>"""
     os.makedirs(f"angel-numbers/{n}", exist_ok=True)
     open(f"angel-numbers/{n}/index.html", "w", encoding="utf-8").write(out)
+    # Small JSON for the app (/app/): only what the app shows.
+    def plain(h):
+        return re.sub(r"\s+", " ", html.unescape(re.sub("<[^>]+>", " ", h))).strip()
+    sec = {h: plain(c) for h, c in p["sections"]}
+    pick = lambda word: next((v for k, v in sec.items() if word in k), "")
+    data = {"number": n, "tag": p["tag"], "keyword": p["keyword"], "lead": p["lead"],
+            "root": root_line(n), "seen": p["clock"], "love": pick("in love"),
+            "career": pick("money and career"), "steps": p["steps"],
+            "faq": [[q, a] for q, a in p["faq"]], "url": f"/angel-numbers/{n}/"}
+    os.makedirs("angel-numbers/data", exist_ok=True)
+    json.dump(data, open(f"angel-numbers/data/{n}.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 
 def sort_key(n):
     rep = len(set(n)) == 1
