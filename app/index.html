@@ -106,6 +106,7 @@ nav.tabs button.on{color:var(--gold)}
   <button data-v="v-rep"><b>★</b>FULL REPORT</button>
 </nav>
 
+<script src="/app/quick.js"></script>
 <script>
 (function(){
 const $=id=>document.getElementById(id);
@@ -134,14 +135,19 @@ function rootLine(n){
   const p=[];let c=n;while(c.length>1){const s=String(sum(c));p.push(c.split("").join("+")+" = "+s);c=s;if(c==="11"||c==="22")break}
   return p.join(", ")||n;
 }
-function digitCard(n,j){
-  const seen=[];let rows="";n.split("").forEach(d=>{if(!seen.includes(d)){seen.push(d);rows+="<li><b>"+d+"</b>: "+D[d]+"</li>"}});
-  const links=[];seen.forEach(d=>[d+d+d+d,d+d+d].forEach(x=>{if(j[x]!==undefined&&!links.includes(x))links.push(x)}));
+function quickCard(n,j){
+  const q=ksnQuick(n),seen=[];n.split("").forEach(d=>{if(!seen.includes(d))seen.push(d)});
+  const links=[];seen.forEach(d=>[d+d+d+d,d+d+d].forEach(x=>{if(j[x]!==undefined&&x!==n&&!links.includes(x))links.push(x)}));
   return '<div class="card"><div class="big">'+esc(n)+'</div><span class="tag">QUICK READING</span>'+
-   (j[n]?'<p><b>Key message:</b> '+esc(j[n])+'</p>':'<p>Our full guide to this number is not written yet. Here is a reading from its digits.</p>')+
-   '<ul class="ck">'+rows+'</ul><div class="kv"><span>Root number</span><span>'+esc(rootLine(n))+'</span></div>'+
-   (j[n]?'<a class="more" href="/angel-numbers/'+n+'/">Read the full guide →</a>':'')+
-   (links.length?'<p style="margin-top:10px">Related: '+links.map(x=>'<a class="more" style="margin-right:10px" href="#" data-n="'+x+'">'+x+'</a>').join("")+'</p>':'')+'</div>';
+   '<p>'+esc(q.lead)+'</p><p>'+esc(q.meaning)+'</p>'+
+   '<div class="kv"><span>Key theme</span><span>'+esc(q.keyword)+'</span></div>'+
+   '<div class="kv"><span>Root number</span><span>'+esc(q.root)+'</span></div>'+
+   '<div class="kv"><span>Where you see it</span><span>'+esc(q.seen)+'</span></div>'+
+   '<h3>Love</h3><p>'+esc(q.love)+'</p><h3>Money & career</h3><p>'+esc(q.career)+'</p>'+
+   '<h3>2027</h3><p>'+esc(q.y2027)+'</p>'+
+   '<h3>What to do today</h3><ol>'+q.steps.map(s=>"<li>"+esc(s)+"</li>").join("")+'</ol>'+
+   (j[n]!==undefined?'<a class="more" href="/angel-numbers/'+n+'/">Read the full guide →</a>':'<p class="note">A full guide to '+esc(n)+' is on its way. This quick reading is built from the standard meaning of each digit.</p>')+
+   (links.length?'<p style="margin-top:10px">Related guides: '+links.map(x=>'<a class="more" style="margin-right:10px" href="#" data-n="'+x+'">'+x+'</a>').join("")+'</p>':'')+'</div>';
 }
 function fullCard(d){
   const faq=d.faq.map(f=>"<details><summary>"+esc(f[0])+"</summary><p>"+esc(f[1])+"</p></details>").join("");
@@ -161,7 +167,7 @@ function look(n){
   const out=$("out");
   if(!n){out.innerHTML='<p class="err">Type a number with 1 to 6 digits.</p>';return}
   out.innerHTML='<p class="sub">Looking up '+esc(n)+'…</p>';
-  load().then(j=>fetch("/angel-numbers/data/"+n+".json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{out.innerHTML=fullCard(d)}).catch(()=>{out.innerHTML=digitCard(n,j)}))
+  load().then(j=>fetch("/angel-numbers/data/"+n+".json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{out.innerHTML=fullCard(d)}).catch(()=>{out.innerHTML=quickCard(n,j)}))
    .then(()=>{out.querySelectorAll("[data-n]").forEach(a=>a.onclick=e=>{e.preventDefault();$("q").value=a.dataset.n;look(a.dataset.n)})});
   try{history.replaceState(null,"","/app/?n="+n)}catch(e){}
 }
