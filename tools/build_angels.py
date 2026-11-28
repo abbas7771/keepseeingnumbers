@@ -44,6 +44,9 @@ def root_line(n):
         s = str(sum(int(d) for d in cur))
         parts.append(f"{'+'.join(cur)} = {s}")
         cur = s
+        if cur in ("11", "22"):
+            parts.append(f"kept as master number {cur}")
+            break
     return ", ".join(parts)
 
 def root_of(n):
@@ -52,6 +55,8 @@ def root_of(n):
     cur = n
     while len(cur) > 1:
         cur = str(sum(int(d) for d in cur))
+        if cur in ("11", "22"):
+            break
     return cur
 
 STYLE = open("angel-numbers/444/index.html", encoding="utf-8").read().split("<style>")[1].split("</style>")[0]
@@ -210,7 +215,7 @@ def build_hub(pages, live):
 
 def update_sitemap(pages, live):
     sm = open("sitemap.xml", encoding="utf-8").read()
-    today = datetime.date.today().isoformat()
+    today = max(p["modified"] for p in pages.values())
     for n in sorted(pages):
         loc = f"{SITE}/angel-numbers/{n}/"
         entry = f"<url><loc>{loc}</loc><lastmod>{pages[n]['modified']}</lastmod></url>"
@@ -224,10 +229,13 @@ def update_sitemap(pages, live):
     open("sitemap.xml", "w", encoding="utf-8").write(sm)
 
 def main():
+    # Only pages whose publish date has arrived (Baku time) are built.
+    today = os.environ.get("KSN_TODAY") or (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=4)).date().isoformat()
     pages = {}
     for f in sorted(glob.glob("content/angels/*.json")):
         p = json.load(open(f, encoding="utf-8"))
-        pages[p["number"]] = p
+        if p.get("published", "0000") <= today:
+            pages[p["number"]] = p
     live = set(LEGACY) | set(pages)
     for p in pages.values():
         build_page(p, pages, live)
