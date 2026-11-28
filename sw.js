@@ -1,5 +1,5 @@
 // Keep Seeing Numbers app: offline shell + fresh data.
-const V = "ksn-app-v3";
+const V = "ksn-app-v4";
 const SHELL = ["/app/", "/app/manifest.webmanifest", "/app/quick.js", "/app/icon-192.png", "/angel-numbers/numbers.json"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => {
