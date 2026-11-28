@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Keep Seeing Numbers App: Angel Numbers, Life Path & 2027</title>
+<meta name="description" content="Free app: look up any angel number, find your Life Path number and your 2027 Personal Year. Install it on your phone in one tap.">
+<link rel="canonical" href="https://keepseeingnumbers.com/app/">
+<link rel="manifest" href="/app/manifest.webmanifest">
+<meta name="theme-color" content="#0a0806">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KSN">
+<link rel="apple-touch-icon" href="/app/icon-192.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0806;--card:#13100c;--line:rgba(255,204,102,.22);--gold:#ffcc66;--ink:#f3ece0;--mute:#a59d90}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:Montserrat,system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
+body{min-height:100vh;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+header{padding:calc(18px + env(safe-area-inset-top)) 20px 6px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;letter-spacing:3px;font-size:12px;display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none}
+.logo i{width:16px;height:16px;border-radius:50%;border:2px solid var(--gold);display:inline-block}
+#install{display:none;border:1px solid var(--gold);color:var(--gold);background:none;border-radius:999px;padding:7px 14px;font:inherit;font-size:12px;font-weight:700}
+main{padding:10px 20px 20px;max-width:560px;margin:0 auto}
+.view{display:none}.view.on{display:block}
+h1{font-family:"Cormorant Garamond",serif;font-size:34px;line-height:1.1;margin:10px 0 6px}
+h1 em{color:var(--gold);font-style:normal}
+.sub{color:var(--mute);font-size:14px;line-height:1.5;margin-bottom:16px}
+.search{display:flex;gap:8px}
+input,select{background:#000;border:1px solid rgba(255,204,102,.45);color:var(--ink);border-radius:14px;padding:14px 16px;font:inherit;font-size:17px;width:100%}
+.btn{border:0;border-radius:14px;padding:14px 20px;font:inherit;font-weight:800;letter-spacing:1px;color:#000;background:linear-gradient(90deg,#ffd27a,#ff9a3c);cursor:pointer;text-decoration:none;display:inline-block;text-align:center}
+.btn.w{width:100%;margin-top:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.chips button{background:var(--card);border:1px solid var(--line);color:var(--gold);border-radius:999px;padding:8px 14px;font:inherit;font-weight:700;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-top:16px}
+.big{font-family:"Cormorant Garamond",serif;font-size:64px;color:var(--gold);line-height:1}
+.tag{display:inline-block;font-size:10px;letter-spacing:3px;border:1px solid var(--gold);color:var(--gold);border-radius:20px;padding:4px 10px;margin:8px 0 10px}
+.card p{line-height:1.6;font-size:15px;color:#ddd5c6;margin-bottom:10px}
+.card h3{font-size:13px;letter-spacing:2px;color:var(--gold);margin:14px 0 6px;text-transform:uppercase}
+.card ol{margin:0 0 6px 20px;line-height:1.6;color:#ddd5c6}
+details{border-top:1px solid rgba(255,255,255,.08);padding:10px 0}
+summary{cursor:pointer;font-weight:600;font-size:14px}
+details p{margin-top:8px}
+.kv{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.kv span:first-child{color:var(--mute)}
+.more{color:var(--gold);font-weight:700;text-decoration:none;display:inline-block;margin-top:8px}
+.row{display:grid;grid-template-columns:1fr 1.4fr 1.2fr;gap:8px}
+.res{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:6px}
+.res div{text-align:center;background:#000;border:1px solid var(--line);border-radius:16px;padding:12px 6px}
+.res b{display:block;font-family:"Cormorant Garamond",serif;font-size:40px;color:var(--gold)}
+.res span{font-size:11px;color:var(--mute);letter-spacing:1px}
+.err{color:#ff8a7a;font-size:13px;margin-top:8px;min-height:16px}
+ul.ck{list-style:none;margin:10px 0}
+ul.ck li{padding:6px 0 6px 24px;position:relative;font-size:14px;color:#ddd5c6}
+ul.ck li:before{content:"✦";position:absolute;left:0;color:var(--gold)}
+.note{font-size:12px;color:var(--mute);margin-top:12px;line-height:1.5}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(10,8,6,.96);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);backdrop-filter:blur(10px)}
+nav.tabs button{flex:1;background:none;border:0;color:var(--mute);font:inherit;font-size:11px;font-weight:700;letter-spacing:1px;padding:12px 0 14px;display:flex;flex-direction:column;align-items:center;gap:4px}
+nav.tabs button b{font-size:20px;font-family:"Cormorant Garamond",serif}
+nav.tabs button.on{color:var(--gold)}
+#ios{display:none}
+</style>
+</head>
+<body>
+<header><a class="logo" href="/app/"><i></i>KEEP SEEING NUMBERS</a><button id="install">Install app</button></header>
+<main>
+
+<section class="view on" id="v-num">
+  <h1>Keep seeing a <em>number?</em></h1>
+  <p class="sub">Type it below. Times work too, like 11:11.</p>
+  <form class="search" id="f-num"><input id="q" inputmode="numeric" autocomplete="off" placeholder="e.g. 444 or 17:17" aria-label="Number"><button class="btn" type="submit">Go</button></form>
+  <div class="chips" id="chips"></div>
+  <div id="out"></div>
+  <div class="card" id="ios"><p><b>Add to Home Screen:</b> tap the Share button in Safari, then "Add to Home Screen". The app opens full-screen like any other app.</p></div>
+</section>
+
+<section class="view" id="v-me">
+  <h1>Your <em>numbers</em></h1>
+  <p class="sub">Enter your birthday once. It stays on this phone only.</p>
+  <div class="row"><select id="bd" aria-label="Day"></select><select id="bm" aria-label="Month"></select><input id="by" inputmode="numeric" placeholder="Year" aria-label="Year" maxlength="4"></div>
+  <button class="btn w" id="calc">Show my numbers</button>
+  <div class="err" id="merr"></div>
+  <div id="mine"></div>
+</section>
+
+<section class="view" id="v-rep">
+  <h1>Your full <em>report</em></h1>
+  <p class="sub">A personal numerology report built from your full name and birth date.</p>
+  <div class="card">
+    <ul class="ck"><li>Expression Number: your natural talents, from your full name</li><li>Soul Urge: what your heart secretly wants</li><li>Your love and money patterns in full detail</li><li>Your 2027 Personal Year, month by month</li><li>Love compatibility: which numbers match yours</li><li>Your angel numbers: what 111, 222, 333 mean for you</li></ul><p style="text-align:center;margin:6px 0 0"><span style="text-decoration:line-through;color:var(--mute)">$19</span> <span style="font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold);font-weight:700">$9</span> <span class="tag" style="margin:0 0 0 6px">LAUNCH PRICE</span></p>
+    <input id="fn" placeholder="Full name (first and last)" autocomplete="name" style="margin-top:6px">
+    <div class="row" style="margin-top:8px"><select id="rd" aria-label="Day"></select><select id="rm" aria-label="Month"></select><input id="ry" inputmode="numeric" placeholder="Year" maxlength="4" aria-label="Year"></div>
+    <div class="err" id="rerr"></div>
+    <a class="btn w" id="buy" href="https://meherremov7.gumroad.com/l/evpeqb/WELCOME10">Get my full report</a>
+    <p class="note">15-page personal report + workbook · Instant PDF · Secure checkout via Gumroad.</p>
+  </div>
+  <a class="more" href="/report/">Already bought? Open your report →</a>
+</section>
+
+</main>
+<nav class="tabs">
+  <button class="on" data-v="v-num"><b>111</b>NUMBERS</button>
+  <button data-v="v-me"><b>✦</b>MY NUMBERS</button>
+  <button data-v="v-rep"><b>★</b>FULL REPORT</button>
+</nav>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const D={"0":"potential and new cycles","1":"new beginnings and independence","2":"balance and partnership","3":"creativity and expression","4":"structure and steady work","5":"change and freedom","6":"home, care and responsibility","7":"reflection and inner wisdom","8":"abundance and personal power","9":"completion and compassion"};
+const LP={1:"The Leader",2:"The Peacemaker",3:"The Communicator",4:"The Builder",5:"The Free Spirit",6:"The Nurturer",7:"The Seeker",8:"The Powerhouse",9:"The Old Soul",11:"The Intuitive Messenger",22:"The Master Builder",33:"The Master Teacher"};
+const PY={1:"A Year of New Beginnings",2:"A Year of Patience & Partnership",3:"A Year of Expression & Joy",4:"A Year of Building",5:"A Year of Change & Freedom",6:"A Year of Love & Responsibility",7:"A Year of Reflection",8:"A Year of Power & Results",9:"A Year of Completion"};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sum=n=>String(n).split("").reduce((a,b)=>a+ +b,0);
+const red=(n,m)=>{while(n>9&&!(m&&(n===11||n===22||n===33)))n=sum(n);return n};
+let list=null;
+const load=()=>list?Promise.resolve(list):fetch("/angel-numbers/numbers.json").then(r=>r.json()).then(j=>list=j).catch(()=>list={});
+
+/* tabs */
+document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav.tabs button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id===b.dataset.v));
+  scrollTo(0,0);
+});
+
+/* quick chips */
+["111","222","333","444","555","777","1111","1212"].forEach(n=>{const c=document.createElement("button");c.textContent=n;c.onclick=()=>{$("q").value=n;look()};$("chips").appendChild(c)});
+
+function rootLine(n){
+  if(/^(11|22|33)$/.test(n))return n.split("").join("+")+" = "+sum(n)+" (master number "+n+")";
+  if(/^0+$/.test(n))return "0 (pure potential)";
+  const p=[];let c=n;while(c.length>1){const s=String(sum(c));p.push(c.split("").join("+")+" = "+s);c=s;if(c==="11"||c==="22")break}
+  return p.join(", ")||n;
+}
+function digitCard(n,j){
+  const seen=[];let rows="";n.split("").forEach(d=>{if(!seen.includes(d)){seen.push(d);rows+="<li><b>"+d+"</b>: "+D[d]+"</li>"}});
+  const links=[];seen.forEach(d=>[d+d+d+d,d+d+d].forEach(x=>{if(j[x]!==undefined&&!links.includes(x))links.push(x)}));
+  return '<div class="card"><div class="big">'+esc(n)+'</div><span class="tag">QUICK READING</span>'+
+   (j[n]?'<p><b>Key message:</b> '+esc(j[n])+'</p>':'<p>Our full guide to this number is not written yet. Here is a reading from its digits.</p>')+
+   '<ul class="ck">'+rows+'</ul><div class="kv"><span>Root number</span><span>'+esc(rootLine(n))+'</span></div>'+
+   (j[n]?'<a class="more" href="/angel-numbers/'+n+'/">Read the full guide →</a>':'')+
+   (links.length?'<p style="margin-top:10px">Related: '+links.map(x=>'<a class="more" style="margin-right:10px" href="#" data-n="'+x+'">'+x+'</a>').join("")+'</p>':'')+'</div>';
+}
+function fullCard(d){
+  const faq=d.faq.map(f=>"<details><summary>"+esc(f[0])+"</summary><p>"+esc(f[1])+"</p></details>").join("");
+  return '<div class="card"><div class="big">'+esc(d.number)+'</div><span class="tag">'+esc(d.tag)+'</span>'+
+   '<p>'+esc(d.lead)+'</p>'+
+   '<div class="kv"><span>Key message</span><span>'+esc(d.keyword)+'</span></div>'+
+   '<div class="kv"><span>Root number</span><span>'+esc(d.root)+'</span></div>'+
+   '<div class="kv"><span>Where you see it</span><span>'+esc(d.seen)+'</span></div>'+
+   (d.love?'<h3>Love</h3><p>'+esc(d.love)+'</p>':'')+
+   (d.career?'<h3>Money & career</h3><p>'+esc(d.career)+'</p>':'')+
+   '<h3>What to do today</h3><ol>'+d.steps.map(s=>"<li>"+esc(s)+"</li>").join("")+'</ol>'+
+   '<h3>Questions</h3>'+faq+
+   '<a class="more" href="'+d.url+'">Read the full guide →</a></div>';
+}
+function look(n){
+  n=n||($("q").value||"").replace(/\D/g,"").slice(0,6);
+  const out=$("out");
+  if(!n){out.innerHTML='<p class="err">Type a number with 1 to 6 digits.</p>';return}
+  out.innerHTML='<p class="sub">Looking up '+esc(n)+'…</p>';
+  load().then(j=>fetch("/angel-numbers/data/"+n+".json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{out.innerHTML=fullCard(d)}).catch(()=>{out.innerHTML=digitCard(n,j)}))
+   .then(()=>{out.querySelectorAll("[data-n]").forEach(a=>a.onclick=e=>{e.preventDefault();$("q").value=a.dataset.n;look(a.dataset.n)})});
+  try{history.replaceState(null,"","/app/?n="+n)}catch(e){}
+}
+$("f-num").onsubmit=e=>{e.preventDefault();look()};
+
+/* birthday selects */
+const M=["January","February","March","April","May","June","July","August","September","October","November","December"];
+[["bd","bm"],["rd","rm"]].forEach(([d,m])=>{$(d).add(new Option("Day",""));for(let i=1;i<=31;i++)$(d).add(new Option(i,i));$(m).add(new Option("Month",""));M.forEach((x,i)=>$(m).add(new Option(x,i+1)))});
+let saved={};try{saved=JSON.parse(localStorage.getItem("ksn_bday")||"{}")}catch(e){}
+if(saved.d){$("bd").value=saved.d;$("rd").value=saved.d}if(saved.m){$("bm").value=saved.m;$("rm").value=saved.m}if(saved.y){$("by").value=saved.y;$("ry").value=saved.y}
+
+function validDate(d,m,y){if(!d||!m||!y||y<1900||y>new Date().getFullYear())return false;const t=new Date(y,m-1,d);return t.getMonth()===m-1}
+$("calc").onclick=()=>{
+  const d=+$("bd").value,m=+$("bm").value,y=+$("by").value;
+  if(!validDate(d,m,y)){$("merr").textContent="Please choose your full birth date.";return}
+  $("merr").textContent="";
+  try{localStorage.setItem("ksn_bday",JSON.stringify({d,m,y}))}catch(e){}
+  const a=red(m,true),b=red(d,true),c=red(sum(y),true),lp=red(a+b+c,true);
+  const py=red(red(d)+red(m)+2);
+  const now=new Date(),pday=red(sum(m)+sum(d)+sum(now.getFullYear())+sum(now.getMonth()+1)+sum(now.getDate()));
+  $("mine").innerHTML='<div class="card"><div class="res"><div><b>'+lp+'</b><span>LIFE PATH</span></div><div><b>'+py+'</b><span>2027 YEAR</span></div><div><b>'+pday+'</b><span>TODAY</span></div></div>'+
+   '<h3>Life Path '+lp+': '+esc(LP[lp])+'</h3><p>'+M[m-1]+' → '+a+' · Day '+d+' → '+b+' · '+y+' → '+c+' · '+a+'+'+b+'+'+c+' → '+lp+'</p><a class="more" href="/life-path/'+lp+'/">What Life Path '+lp+' means →</a>'+
+   '<h3>2027 Personal Year '+py+'</h3><p>'+esc(PY[py])+'.</p><a class="more" href="/numerology-2027/personal-year-'+py+'/">Your 2027, month by month →</a>'+
+   '<h3>Go deeper</h3><p>Your full report adds your Expression and Soul Urge numbers, love compatibility and your 2027 month by month.</p><button class="btn w" id="toRep">See the full report</button></div>';
+  $("toRep").onclick=()=>document.querySelector('nav.tabs button[data-v="v-rep"]').click();
+};
+
+/* paid report: same flow as the homepage (name + birthday saved, then Gumroad) */
+$("buy").onclick=e=>{
+  e.preventDefault();
+  const name=$("fn").value.trim().replace(/\s+/g," ");
+  const d=+$("rd").value,m=+$("rm").value,y=+$("ry").value;
+  if(name.split(" ").length<2||!/[a-zA-Z]/.test(name)){$("rerr").textContent="Please enter at least your first and last name.";return}
+  if(!validDate(d,m,y)){$("rerr").textContent="Please choose your full birth date.";return}
+  const a=new Uint8Array(12);crypto.getRandomValues(a);const sid=Array.from(a,b=>b.toString(16).padStart(2,"0")).join("");
+  try{localStorage.setItem("ksn_order",JSON.stringify({sid,name,d,m,y,t:Date.now()}));localStorage.setItem("ksn_bday",JSON.stringify({d,m,y}))}catch(err){}
+  location.href=$("buy").getAttribute("href")+"?sid="+sid;
+};
+
+/* deep link ?n=444 */
+const qn=new URLSearchParams(location.search).get("n");if(qn){$("q").value=qn;look(qn.replace(/\D/g,""))}
+
+/* install */
+let deferred=null;
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("install").style.display="block"});
+$("install").onclick=()=>{if(deferred){deferred.prompt();deferred=null;$("install").style.display="none"}};
+const ios=/iphone|ipad|ipod/i.test(navigator.userAgent),standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+if(ios&&!standalone)$("ios").style.display="block";
+if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});
+})();
+</script>
+</body>
+</html>
